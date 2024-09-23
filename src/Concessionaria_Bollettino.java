@@ -54,13 +54,40 @@ public class Concessionaria_Bollettino {
         }
     }
 
+    public static void modificaAuto() {
+        System.out.print("Inserisci il numero dell'auto da modificare (0 a " + (indice - 1) + "): ");
+        int pos = in.nextInt();
+        in.nextLine();
+
+        if (pos >= 0 && pos < indice) {
+            System.out.print("Inserisci la nuova marca: ");
+            String nuovaMarca = in.nextLine();
+
+            System.out.print("Inserisci il nuovo modello: ");
+            String nuovoModello = in.nextLine();
+
+            System.out.print("Inserisci il nuovo prezzo: ");
+            double nuovoPrezzo = in.nextDouble();
+            in.nextLine();
+
+            listaAuto[pos].marca = nuovaMarca;
+            listaAuto[pos].modello = nuovoModello;
+            listaAuto[pos].prezzo = nuovoPrezzo;
+
+            System.out.println("Auto modificata con successo!");
+        } else {
+            System.out.println("Numero di auto non valido.");
+        }
+    }
+
     public static void main(String[] args) {
         int scelta;
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Aggiungi una macchina");
             System.out.println("2. Visualizza le auto che hai inserito");
-            System.out.println("3. Esci.");
+            System.out.println("3. Modifica i dati di un'auto");
+            System.out.println("4. Esci.");
             System.out.print("Scegli un'opzione: ");
             scelta = in.nextInt();
             in.nextLine();
@@ -73,11 +100,14 @@ public class Concessionaria_Bollettino {
                     visualizza();
                     break;
                 case 3:
+                    modificaAuto();
+                    break;
+                case 4:
                     System.out.println("Uscita dal programma.");
                     break;
                 default:
                     System.out.println("Opzione non valida. Riprova.");
             }
-        } while (scelta != 5);
+        } while (scelta != 4);
     }
 }
