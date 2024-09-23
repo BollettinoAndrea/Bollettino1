@@ -97,15 +97,29 @@ public class Concessionaria_Bollettino {
         }
     }
 
+    public static void visualizzaInOrdineCrescente() {
+        for (int i = 0; i < indice - 1; i++) {
+            for (int j = i + 1; j < indice; j++) {
+                if (listaAuto[i].prezzo > listaAuto[j].prezzo) {
+                    Auto temp = listaAuto[i];
+                    listaAuto[i] = listaAuto[j];
+                    listaAuto[j] = temp;
+                }
+            }
+        }
+        visualizza();
+    }
+
     public static void main(String[] args) {
         int scelta;
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Aggiungi una macchina");
             System.out.println("2. Visualizza le auto che hai inserito");
-            System.out.println("3. Modifica i dati di un'auto");
-            System.out.println("4. Cancella auto.");
-            System.out.println("5. Esci.");
+            System.out.println("3. Visualizza le auto in ordine crescente");
+            System.out.println("4. Modifica i dati di un'auto");
+            System.out.println("5. Cancella auto.");
+            System.out.println("6. Esci.");
             System.out.print("Scegli un'opzione: ");
             scelta = in.nextInt();
             in.nextLine();
@@ -118,12 +132,15 @@ public class Concessionaria_Bollettino {
                     visualizza();
                     break;
                 case 3:
-                    modificaAuto();
+                    visualizzaInOrdineCrescente();
                     break;
                 case 4:
-                    cancellaAuto();
+                    modificaAuto();
                     break;
                 case 5:
+                    cancellaAuto();
+                    break;
+                case 6:
                     System.out.println("Uscita dal programma.");
                     break;
                 default:
