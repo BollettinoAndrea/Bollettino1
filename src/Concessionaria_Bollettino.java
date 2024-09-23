@@ -80,6 +80,23 @@ public class Concessionaria_Bollettino {
         }
     }
 
+    public static void cancellaAuto() {
+        System.out.print("Inserisci il numero dell'auto da cancellare (0 a " + (indice - 1) + "): ");
+        int pos = in.nextInt();
+        in.nextLine();
+
+        if (pos >= 0 && pos < indice) {
+            for (int i = pos; i < indice - 1; i++) {
+                listaAuto[i] = listaAuto[i + 1];
+            }
+            listaAuto[indice - 1] = null;
+            indice--;
+            System.out.println("Auto cancellata con successo.");
+        } else {
+            System.out.println("Numero di auto non valido.");
+        }
+    }
+
     public static void main(String[] args) {
         int scelta;
         do {
@@ -87,7 +104,8 @@ public class Concessionaria_Bollettino {
             System.out.println("1. Aggiungi una macchina");
             System.out.println("2. Visualizza le auto che hai inserito");
             System.out.println("3. Modifica i dati di un'auto");
-            System.out.println("4. Esci.");
+            System.out.println("4. Cancella auto.");
+            System.out.println("5. Esci.");
             System.out.print("Scegli un'opzione: ");
             scelta = in.nextInt();
             in.nextLine();
@@ -103,11 +121,14 @@ public class Concessionaria_Bollettino {
                     modificaAuto();
                     break;
                 case 4:
+                    cancellaAuto();
+                    break;
+                case 5:
                     System.out.println("Uscita dal programma.");
                     break;
                 default:
-                    System.out.println("Opzione non valida. Riprova.");
+                    System.out.println("Opzione non valida.");
             }
-        } while (scelta != 4);
+        } while (scelta != 5);
     }
 }
