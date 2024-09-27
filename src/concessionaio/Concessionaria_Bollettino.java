@@ -6,9 +6,9 @@ class Auto {
     double prezzo;
 
     public Auto(String marca, String modello, double prezzo) {
-        this.marca = marca;
-        this.modello = modello;
-        this.prezzo = prezzo;
+        marca = marca;
+        modello = modello;
+        prezzo = prezzo;
     }
 
     public String dettagliAuto() {
